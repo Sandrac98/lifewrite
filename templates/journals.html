@@ -1,7 +1,12 @@
 {% extends "base.html" %}
+{% block content %}
+
+<h2>PLEASE WORK!</h2>
 
     {% for journal in journals %}
         {{ journal.category_name }}<br>
         {{ journal.journal_name }}<br>
         {{ journal.journal_entry }}<br>
 {% endfor %}
+
+{% endblock %}
