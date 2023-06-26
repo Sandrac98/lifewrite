@@ -1,15 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LifeWrite</title>
-</head>
-<body>
+{% extends "base.html" %}
+
     {% for journal in journals %}
         {{ journal.category_name }}<br>
         {{ journal.journal_name }}<br>
         {{ journal.journal_entry }}<br>
 {% endfor %}
-</body>
-</html>
