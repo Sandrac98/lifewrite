@@ -22,7 +22,7 @@ mongo = PyMongo(app)
 @app.route("/get_journals")
 def get_journals():
     journals = mongo.db.journals.find()
-    return render_template("base.html", journals=journals)
+    return render_template("journals.html", journals=journals)
 
 
 if __name__ == "__main__":
