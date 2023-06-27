@@ -16,7 +16,7 @@
     <header>
         <nav class="deep-purple lighten-4">
             <div class="nav-wrapper">
-              <a href="#!" class="brand-logo">Logo</a>
+              <a href="{{ url_for('get_journals')}}" class="brand-logo">LifeWrite</a>
               <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fa fa-bars"></i></a>
               <ul class="right hide-on-med-and-down">
                 <li><a href="{{ url_for('get_journals')}}">Home</a></li>
@@ -24,7 +24,7 @@
                 <li><a href="#">New Journal</a></li>
                 <li><a href="#">Log Out</a></li>
                 <li><a href="#">Log In</a></li>
-                <li><a href="#">Register </a></li>
+                <li><a href="{{ url_for('register')}}">Register </a></li>
               </ul>
             </div>
           </nav>
