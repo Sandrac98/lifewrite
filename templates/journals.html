@@ -1,14 +1,12 @@
 {% extends "base.html" %}
+{{ journals|tojson }}
 {% block content %}
 
-<h2>PLEASE WORK!</h2>
 
-    {% for journal in journal %}
+{% for journal in journals %}
 
-        {{ journal.category_name }}<br>
-        {{ journal.journal_name }}<br>
-        {{ journal.journal_entry }}<br>
-
+  <p>{{ journal.category_name }}</p>
+  <p>{{ journal.journal_name }}</p>
+  <p>{{ journal.journal_entry }}</p>
 {% endfor %}
-
 {% endblock %}
