@@ -31,6 +31,30 @@ def get_journals():
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
+    if request.method == "POST":
+        # check if username exists in the db
+        username = request.form.get("username", "")
+        if not username:
+            flash("Please provide a username")
+            return redirect(url_for("register"))
+
+        existing_user = mongo.db.users.find_one({"username": username.lower()})
+        if existing_user:
+            flash("Oops, that username is not available")
+            return redirect(url_for("register"))
+
+        register = {
+            "username": username.lower(),
+            "password": generate_password_hash(request.form.get("password")),
+            "email": request.form.get("email")
+        }
+
+        mongo.db.users.insert_one(register)
+
+        # creates cookie session for new user
+        session["user"] = username.lower()
+        flash("Welcome to LifeWrite!")
+
     return render_template("register.html")
 
 
