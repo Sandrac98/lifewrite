@@ -58,6 +58,34 @@ def register():
     return render_template("register.html")
 
 
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    if request.method == "POST":
+        # Retrieve the username and password from the form
+        username = request.form.get("username", "")
+        password = request.form.get("password", "")
+
+        # Check if username and password are provided
+        if not username or not password:
+            flash("Please provide a username and password")
+            return redirect(url_for("login"))
+
+        # Retrieve the user from the database based on the username
+        existing_user = mongo.db.users.find_one({"username": username.lower()})
+
+        # Check if the user exists and if the password is correct
+        if existing_user and check_password_hash(existing_user["password"], password):  # noqa
+            # creates cookie session for the user
+            session["user"] = username.lower()
+            flash("Welcome back, {}!".format(username))
+            return redirect(url_for("home"))
+        else:
+            flash("Oops invalid username or password", "error")
+            return redirect(url_for("login"))
+
+    return render_template("login.html")
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),

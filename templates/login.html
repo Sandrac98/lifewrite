@@ -2,10 +2,10 @@
 {% block content %}
 
 <div class="row">
-    <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('register') }}">
+    <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('login') }}">
       <div class="card amber lighten-5">
         <div class="card-content indigo-text">
-          <span class="card-title">Register</span>
+          <span class="card-title">Log In</span>
 
           <!--username-->
          <div class="row indigo-text">
@@ -32,18 +32,18 @@
           </div>
           </div>
 
-        <!--register-->
+        <!--log in-->
         <button class="waves-effect waves-light btn-large deep-purple lighten-4" type="submit" name="action">
-            <a class="indigo-text">Register</a>
+            <a class="indigo-text">Log In</a>
           </button>
 
-          <div class="row">
-            <div class="col-12">
-              <p class="center-align">
-                Do you have an account? <a href="{{ url_for('login')}}"> Log in here! </a>
-              </p>
-            </div>
+        <div class="row">
+          <div class="col-12">
+            <p class="center-align">
+              Are you new here? <a href="{{ url_for('register')}}"> Create an account! </a>
+            </p>
           </div>
+        </div>
     </div>
     </div>
     </form>
