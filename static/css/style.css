@@ -1,7 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Caprasimo&family=Hammersmith+One&display=swap');
-   
+  
+.brand-logo {
+  font-family: caprasimo;
+  float: left;
+  width: 30%;
+  height: 100%;
+  margin-left: 10px;
+}
 
- /* label color */
+ /* form label color */
  .input-field label {
     color: #3f51b5;
   }

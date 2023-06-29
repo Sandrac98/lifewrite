@@ -5,9 +5,9 @@ from flask import (
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
+
 if os.path.exists("env.py"):
     import env
-
 
 app = Flask(__name__)
 
@@ -61,29 +61,40 @@ def register():
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
-        # Retrieve the username and password from the form
-        username = request.form.get("username", "")
-        password = request.form.get("password", "")
+        # Check if username exists in the database
+        existing_user = mongo.db.users.find_one({"username": request.form.get("username").lower()})  # noqa
 
-        # Check if username and password are provided
-        if not username or not password:
-            flash("Please provide a username and password")
-            return redirect(url_for("login"))
+        if existing_user:
+            # Ensure hashed password matches user input
+            if check_password_hash(existing_user["password"], request.form.get("password")):  # noqa
+                session["user"] = request.form.get("username").lower()
+                flash("Welcome, {}".format(request.form.get("username")))
+                return redirect(url_for("profile", username=session["user"]))
 
-        # Retrieve the user from the database based on the username
-        existing_user = mongo.db.users.find_one({"username": username.lower()})
-
-        # Check if the user exists and if the password is correct
-        if existing_user and check_password_hash(existing_user["password"], password):  # noqa
-            # creates cookie session for the user
-            session["user"] = username.lower()
-            flash("Welcome back, {}!".format(username))
-            return redirect(url_for("home"))
-        else:
-            flash("Oops invalid username or password", "error")
-            return redirect(url_for("login"))
+        # Invalid username or password
+        flash("Incorrect Username and/or Password")
+        return redirect(url_for("login"))
 
     return render_template("login.html")
+
+
+@app.route("/profile", methods=["GET", "POST"])
+def profile():
+    # Retrieve the user's username from the session
+    username = session.get("username")
+
+    if not username:
+        flash("Please log in to access your profile")
+        return redirect(url_for("login"))
+
+    # Retrieve the user's information from the database based on the session username  # noqa
+    user = mongo.db.users.find_one({"username": username})
+
+    if not user:
+        flash("User not found")
+        return redirect(url_for("login"))
+
+    return render_template("profile.html", username=user["username"])
 
 
 if __name__ == "__main__":
