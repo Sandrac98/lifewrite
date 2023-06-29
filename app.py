@@ -44,7 +44,7 @@ def register():
             return redirect(url_for("register"))
 
         register = {
-            "username": username.lower(),
+            "username": request.form.get("username").lower(),
             "password": generate_password_hash(request.form.get("password")),
             "email": request.form.get("email")
         }
@@ -52,7 +52,7 @@ def register():
         mongo.db.users.insert_one(register)
 
         # creates cookie session for new user
-        session["user"] = username.lower()
+        session["user"] = request.form.get("username").lower()
         flash("Welcome to LifeWrite!")
 
     return render_template("register.html")
@@ -70,10 +70,10 @@ def login():
                 session["user"] = request.form.get("username").lower()
                 flash("Welcome, {}".format(request.form.get("username")))
                 return redirect(url_for("profile", username=session["user"]))
-
-        # Invalid username or password
-        flash("Incorrect Username and/or Password")
-        return redirect(url_for("login"))
+            else:
+                # Invalid username or password
+                flash("Incorrect Username and/or Password")
+                return redirect(url_for("login"))
 
     return render_template("login.html")
 
@@ -88,13 +88,21 @@ def profile():
         return redirect(url_for("login"))
 
     # Retrieve the user's information from the database based on the session username  # noqa
-    user = mongo.db.users.find_one({"username": username})
+    username = mongo.db.users.find_one({"username": username})
 
-    if not user:
-        flash("User not found")
+    if not username:
+        flash("User not found :(")
         return redirect(url_for("login"))
 
-    return render_template("profile.html", username=user["username"])
+    return render_template("profile.html", username=username["username"])
+
+
+@app.route("/logout")
+def logout():
+    # remove user from session cookie
+    flash("You have been logged out. See you soon!")
+    session.pop("user")
+    return redirect(url_for("login"))
 
 
 if __name__ == "__main__":
