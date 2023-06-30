@@ -13,4 +13,29 @@
     color: #3f51b5;
   }
 
+footer{
+  background-color: #3f51b5;
+}
+  footer p {
+    text-align: center;
+    text-transform: none;
+    font-size: 1.3em;
+    color: #0c2f80;
+    
+}
 
+.social-network {
+    text-align: center;
+}
+
+.social-network li {
+    display: inline;
+}
+
+.social-network i {
+    margin: 13px;
+    padding-left: 15px;
+    color: #0c2f80;
+    font-weight: bold;
+    font-size: 2em;
+}

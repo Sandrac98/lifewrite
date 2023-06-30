@@ -3,31 +3,15 @@
 {% block content %}
 
 
-{% for journal in journals %}
+<ul class="collapsible popout">
+  {% for journal in journals %}
+  <li>
+    <div class="collapsible-header">{{ journal.journal_name }}</div>
+    <div class="collapsible-body"><p>{{ journal.journal_entry }}</p></div>
+  </li>
+  <li>
+  </ul>
 
-  <p>{{ journal.category_name }}</p>
-  <p>{{ journal.journal_name }}</p>
-  <p>{{ journal.journal_entry }}</p>
 {% endfor %}
-
-<div class="row">
-
-  <div class="col s4">
-    <!-- Promo Content 1 goes here -->
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil aspernatur, laudantium culpa quod, ipsa rerum quam voluptate temporibus nesciunt quo, illum et ad. Dolor obcaecati quaerat enim iure reprehenderit omnis!
-    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium ex unde omnis perspiciatis molestiae libero alias quibusdam, facilis sed at natus eveniet adipisci eos, hic explicabo, repudiandae aperiam aliquid consequuntur?Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius, magnam voluptas. Sint eos voluptate dolor dicta,
-     praesentium iure expedita? Optio consequuntur nam neque unde inventore ipsam deserunt vitae laboriosam id?
-  </div>
-  <div class="col s4">
-    <!-- Promo Content 2 goes here -->
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates aperiam reprehenderit dicta accusamus error ipsum sed sapiente nam! Aut ut quod veritatis harum, saepe molestiae corporis beatae quasi est inventore.
-  </div>
-  <div class="col s4">
-    <!-- Promo Content 3 goes here -->
-    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minima, voluptates ducimus repellat odit itaque quasi quibusdam cum recusandae sint! Sed nam ipsam labore eius corporis quia, magnam illo possimus exercitationem?
-  </div>
-
-</div>
-      
 
 {% endblock %}
