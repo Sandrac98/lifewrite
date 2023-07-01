@@ -43,3 +43,4 @@ document.querySelectorAll('.read-more-link').forEach(function(link) {
     cardInstance.open();
   });
 });
+

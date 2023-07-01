@@ -32,22 +32,23 @@
   </div>
 </form>
 </div>
+
 <!-- Existing Journals -->
 <div class="row">
   {% for journal in journals %}
-    <div class="col s10 m9 l6">
+    <div class="col s12 m6 l6">
       <div class="card large">
         <div class="card-content">
-          <span class="card-title activator grey-text text-darken-4">{{ journal.journal_name }}<i class="material-icons right">expand_more</i> </span>
-          <p><a href="javascript:void(0);"></a> </p>
+          <span class="card-title activator grey-text text-darken-4">{{ journal.journal_name }}<i class="material-icons right">more_vert</i></span>
         </div>
         <div class="card-reveal">
-          <span class="card-title grey-text text-darken-4">{{ journal.journal_name }} <i class="material-icons right">close</i></span>
-          <p><a href="" class="btn-small light-blue lighten-1"><i class="material-icons">create</i>
-          </a>{{ journal.journal_entry }}</p>
+          <span class="card-title grey-text text-darken-4">{{ journal.journal_name }}<i class="material-icons right">close</i></span>
+          <p>{{ journal.journal_entry }}</p>
         </div>
       </div>
     </div>
   {% endfor %}
 </div>
+
+
 {% endblock %}

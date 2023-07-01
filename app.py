@@ -4,6 +4,7 @@ from flask import (
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
+from flask import jsonify
 from werkzeug.security import generate_password_hash, check_password_hash
 
 if os.path.exists("env.py"):
@@ -133,6 +134,7 @@ def new_journal():
 
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template("new_journal.html", categories=categories)
+
 
 
 if __name__ == "__main__":
