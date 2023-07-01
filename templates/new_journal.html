@@ -1,26 +1,26 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h3>New Journal</h3>
-<<div class="row">
+
+<div class="row">
     <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('register') }}">
       <div class="card amber lighten-5">
         <div class="card-content indigo-text">
-          <span class="card-title">Register</span>
+          <span class="card-title"><h3>New Journal</h3></span>
 
           <!--username-->
          <div class="row indigo-text">
             <div class="input-field col s6">
-                <input  id="username" name="username" type="text" class="validate" minlength="8" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" required>
-                <label for="username">Username</label>
+                <input  id="journal_name" name="username" type="text" class="validate" minlength="8" required>
+                <label for="journal_name">Journal Name</label>
               </div>
          </div>
        
          <!--password-->
         <div class="row">
             <div class="input-field col s6">
-              <input id="password" name="password" type="password" class="validate"  minlength="8" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" required>
-              <label for="password">Password</label>
+              <textarea id="new_entry" name="new_entry" minlength="6" placeholder="Type in here your new entry"></textarea>
+            <label for="new_entry"></label>
             </div>
           </div>
 
