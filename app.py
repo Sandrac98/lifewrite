@@ -31,6 +31,9 @@ def get_journals():
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
+    if "user" in session:
+        return redirect(url_for("get_journals"))
+
     if request.method == "POST":
         # check if username exists in the db
         username = request.form.get("username", "")
@@ -54,6 +57,7 @@ def register():
         # creates cookie session for new user
         session["user"] = request.form.get("username").lower()
         flash("Welcome to LifeWrite!")
+        return redirect(url_for("get_journals"))
 
     return render_template("register.html")
 
@@ -101,9 +105,20 @@ def logout():
     return redirect(url_for("login"))
 
 
-@app.route("/new_journal")
+@app.route("/new_journal", methods=["GET", "POST"])
 def new_journal():
-    return render_template("new_journal.html")
+    if request.method == "POST":
+        journal = {
+            "category_name": request.form.get("category_name"),
+            "journal_name": request.form.get("journal_name"),
+            "journal_entry": request.form.get("journal_entry")
+        }
+        mongo.db.journals.insert_one(journal)
+        flash("Yay! You created a new journal")
+        return redirect(url_for("get_journals"))
+
+    categories = mongo.db.categories.find().sort("category_name", 1)
+    return render_template("new_journal.html", categories=categories)
 
 
 if __name__ == "__main__":

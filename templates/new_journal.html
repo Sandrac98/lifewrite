@@ -11,7 +11,7 @@
           <!--username-->
          <div class="row indigo-text">
             <div class="input-field col s6">
-                <input  id="journal_name" name="username" type="text" class="validate" minlength="8" required>
+                <input  id="journal_name" name="journal_name" type="text" class="validate" minlength="8" required>
                 <label for="journal_name">Journal Name</label>
               </div>
          </div>
@@ -21,8 +21,17 @@
             <div class="input-field col s6">
               <textarea id="new_entry" name="new_entry" minlength="6" placeholder="Type in here your new entry"></textarea>
             <label for="new_entry"></label>
+            <button class="waves-effect waves-light btn-small deep-purple lighten-4" type="submit">
+              <a class="indigo-text"><i class="fa fa-plus"></i></a>
+            </button>
+           
             </div>
           </div>
-
+        </div>
+       
+      </div>
+      </div>
+    </form>
+</div>
         
 {% endblock %}
