@@ -55,3 +55,7 @@ footer{
 .btn-small{
   float: right;
 }
+
+.card-large .card-content {
+  height: 200px;
+}

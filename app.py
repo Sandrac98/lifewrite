@@ -3,7 +3,7 @@ from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
-from bson import ObjectId
+from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
 
 if os.path.exists("env.py"):
@@ -27,6 +27,20 @@ def get_journals():
         return render_template("journals.html", journals=journals)
     except Exception as e:
         return f"Error connecting to MongoDB: {str(e)}"
+
+
+@app.route("/journal/<journal_id>")
+def get_journal(journal_id):
+    try:
+        # Retrieve the journal from the database using the journal_id
+        journal = mongo.db.journals.find_one({"_id": ObjectId(journal_id)})
+        if journal:
+            # Render the journal modal template with the journal data
+            return render_template("journal_modal.html", journal=journal)
+        else:
+            return "Journal not found"
+    except Exception as e:
+        return f"Error retrieving journal: {str(e)}"
 
 
 @app.route("/register", methods=["GET", "POST"])

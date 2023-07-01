@@ -1,19 +1,53 @@
 {% extends "base.html" %}
+
 {% block content %}
+<!-- Button to Show/Hide New Journal Form -->
+<button class="waves-effect waves-light btn deep-purple lighten-4" id="show-form-btn">Add New Journal</button>
 
-
-<ul class="collapsible popout">
+<!-- New Journal Form -->
+<form method="POST" action="{{ url_for('new_journal') }}"  id="new-journal-form" style="display: none;">
+  <div class="card small ">
+    <div class="card-content indigo-text">
+      <!--Journal Name-->
+     <div class="row indigo-text">
+        <div class="input-field col s6">
+            <input  id="journal_name" name="journal_name" type="text" class="validate" minlength="3" required>
+            <label for="journal_name">Journal Name</label>
+          </div>
+     </div>
+   
+     <!--Journal Entry-->
+    <div class="row">
+        <div class="input-field col s6">
+          <textarea id="journal_entry" name="journal_entry" minlength="6" placeholder="Type in here your new entry"></textarea>
+        <label for="journal_entry"></label>
+        <button class="waves-effect waves-light btn-small deep-purple lighten-4" type="submit">
+          <a class="indigo-text"><i class="material-icons">add</i></a>
+        </button>
+        </div>
+      </div>
+    </div>
+   
+  </div>
+  </div>
+</form>
+</div>
+<!-- Existing Journals -->
+<div class="row">
   {% for journal in journals %}
-  <div class="col s2"><a href="" class="btn-small deep-purple lighten-4"><i class="fa fa-pen"></i></a></div>
-  <li>
-    
-    <div class="collapsible-header">{{ journal.journal_name }}</div>
-    
-    <div class="collapsible-body"><p>{{ journal.journal_entry }}</p></div>
-  </li>
-  <li>
-  </ul>
-
-{% endfor %}
-
+    <div class="col s10 m9 l6">
+      <div class="card large">
+        <div class="card-content">
+          <span class="card-title activator grey-text text-darken-4">{{ journal.journal_name }}<i class="material-icons right">expand_more</i> </span>
+          <p><a href="javascript:void(0);"></a> </p>
+        </div>
+        <div class="card-reveal">
+          <span class="card-title grey-text text-darken-4">{{ journal.journal_name }} <i class="material-icons right">close</i></span>
+          <p><a href="" class="btn-small light-blue lighten-1"><i class="material-icons">create</i>
+          </a>{{ journal.journal_entry }}</p>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
 {% endblock %}
