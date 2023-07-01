@@ -4,8 +4,11 @@
 
 <ul class="collapsible popout">
   {% for journal in journals %}
+  <div class="col s2"><a href="" class="btn-small deep-purple lighten-4"><i class="fa fa-pen"></i></a></div>
   <li>
+    
     <div class="collapsible-header">{{ journal.journal_name }}</div>
+    
     <div class="collapsible-body"><p>{{ journal.journal_entry }}</p></div>
   </li>
   <li>

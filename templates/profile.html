@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
-
-    <div class="row">
-        <div class="col s12 m8 offset-m2">
-            <div class="card-panel">
-                <h3 class="center-align light-blue-text text-darken-4">
-                    {{ username }}'s Profile
-                </h3>
+<div class="row">
+    <div class="col s12 m8 offset-m2">
+        <div class="card-panel">
+            <div class="center-align indigo-text">
+                <a href="{{ url_for('get_journals') }}" class="waves-effect waves-light"><h3>Welcome back {{ username }}! </h3>
+                <p class="center-align indigo-text">(press here to go to your journals)</p></a>
             </div>
+            
         </div>
     </div>
-
+</div>
 {% endblock %}
