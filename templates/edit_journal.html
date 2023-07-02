@@ -1,37 +1,34 @@
 {% extends "base.html" %}
+
 {% block content %}
+  <h3>Edit Journal</h3>
 
-
-<div class="row">
-    <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('new_journal') }}">
-      <div class="card amber lighten-5">
-        <div class="card-content indigo-text">
-          <span class="card-title"><h3>New Journal</h3></span>
-
-          <!--username-->
-         <div class="row indigo-text">
+  <form method="POST" id="edit_journal" action="{{ url_for('edit_journal', journal_id=journal._id) }}">
+    <div class="row">
+      <div class="col s12 m8 offset-m2">
+        <div class="card-panel">
+          <!-- Journal Name -->
+          <div class="row">
             <div class="input-field col s6">
-                <input  id="journal_name" name="journal_name" type="text" class="validate" minlength="8" required>
-                <label for="journal_name">Journal Name</label>
-              </div>
-         </div>
-       
-         <!--password-->
-        <div class="row">
-            <div class="input-field col s6">
-              <textarea id="new_entry" name="new_entry" minlength="6" placeholder="Type in here your new entry"></textarea>
-            <label for="new_entry"></label>
-            <button class="waves-effect waves-light btn-small deep-purple lighten-4" type="submit">
-              <a class="indigo-text"><i class="fa fa-plus"></i></a>
-            </button>
-           
+              <input id="journal_name" name="journal_name" type="text" class="validate" minlength="8" required value="{{ journal.journal_name }}">
+              <label for="journal_name">Journal Name</label>
             </div>
           </div>
-        </div>
-       
+
+          <!-- Journal Entry -->
+          <div class="row">
+            <div class="input-field col s12">
+              <textarea id="journal_entry" name="journal_entry" class="materialize-textarea" minlength="6" placeholder="Type your journal entry here">{{ journal.journal_entry }}</textarea>
+              <label for="journal_entry">Journal Entry</label>
+            </div>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="row">
+            <div class="col s12">
+              <button class="waves-effect waves-light btn" type="submit">Update Journal</button>
+            </div>
       </div>
-      </div>
-    </form>
-</div>
-        
+    </div>
+  </form>
 {% endblock %}

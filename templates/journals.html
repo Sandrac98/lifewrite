@@ -5,33 +5,39 @@
 <button class="waves-effect waves-light btn deep-purple lighten-4" id="show-form-btn">Add New Journal</button>
 
 <!-- New Journal Form -->
-<form method="POST" action="{{ url_for('new_journal') }}"  id="new-journal-form" style="display: none;">
-  <div class="card small ">
-    <div class="card-content indigo-text">
-      <!--Journal Name-->
-     <div class="row indigo-text">
-        <div class="input-field col s6">
-            <input  id="journal_name" name="journal_name" type="text" class="validate" minlength="3" required>
+<form method="POST" action="{{ url_for('new_journal') }}" id="new-journal-form" style="display: none;">
+  <div class="row">
+    <div class="col s12 m8 offset-m2">
+      <div class="card-panel">
+        <h3 class="center-align light-blue-text text-darken-4">New Journal</h3>
+
+        <!-- Journal Name -->
+        <div class="row">
+          <div class="input-field col s6">
+            <input id="journal_name" name="journal_name" type="text" class="validate" minlength="8" required>
             <label for="journal_name">Journal Name</label>
           </div>
-     </div>
-   
-     <!--Journal Entry-->
-    <div class="row">
-        <div class="input-field col s6">
-          <textarea id="journal_entry" name="journal_entry" minlength="6" placeholder="Type in here your new entry"></textarea>
-        <label for="journal_entry"></label>
-        <button class="waves-effect waves-light btn-small deep-purple lighten-4" type="submit">
-          <a class="indigo-text"><i class="material-icons">add</i></a>
-        </button>
         </div>
+
+        <!-- New Entry -->
+        <div class="row">
+          <div class="input-field col s12">
+            <textarea id="journal_entry" name="journal_entry" class="materialize-textarea" minlength="6" placeholder="Type your new entry here"></textarea>
+            <label for="journal_entry">New Entry</label>
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="row">
+          <div class="col s12">
+            <button class="waves-effect waves-light btn deep-purple lighten-4" type="submit">Add Journal</button>
+          </div>
+        </div>
+
       </div>
     </div>
-   
-  </div>
   </div>
 </form>
-</div>
 
 <!-- Existing Journals -->
 <div class="row">
@@ -40,6 +46,14 @@
       <div class="card large">
         <div class="card-content">
           <span class="card-title activator grey-text text-darken-4">{{ journal.journal_name }}<i class="material-icons right">more_vert</i></span>
+        </div>
+        <div class="card-action">
+          <!-- Edit button -->
+          <a href="{{ url_for('edit_journal', journal_id=journal._id) }}"><i class="material-icons indigo-text right">create</i></a>
+          <!-- Delete button wrapped with form -->
+          <form id="delete-form-{{ journal._id }}" action="{{ url_for('delete_journal', journal_id=journal._id) }}" method="POST">
+            <button type="submit" class="waves-effect waves-light btn red delete-button" data-journal-id="{{ journal_id }}"><i class="material-icons right">delete</i></button>
+          </form>
         </div>
         <div class="card-reveal">
           <span class="card-title grey-text text-darken-4">{{ journal.journal_name }}<i class="material-icons right">close</i></span>

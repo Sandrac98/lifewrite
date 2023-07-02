@@ -4,9 +4,7 @@ from flask import (
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
-from flask import jsonify
 from werkzeug.security import generate_password_hash, check_password_hash
-
 if os.path.exists("env.py"):
     import env
 
@@ -135,6 +133,29 @@ def new_journal():
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template("new_journal.html", categories=categories)
 
+
+@app.route("/edit_journal/<journal_id>", methods=["GET", "POST"])
+def edit_journal(journal_id):
+    if request.method == "POST":
+        submit = {
+            "journal_name": request.form.get("journal_name"),
+            "journal_entry": request.form.get("journal_entry"),
+        }
+        mongo.db.journals.update_one(
+            {"_id": ObjectId(journal_id)}, {"$set": submit})
+        flash("You just updated the journal")
+        return redirect(url_for("get_journals"))
+    journal = mongo.db.journals.find_one({"_id": ObjectId(journal_id)})
+    categories = mongo.db.categories.find().sort("category_name", 1)
+    return render_template(
+        "edit_journal.html", journal=journal, categories=categories)
+
+
+@app.route("/delete_journal/<journal_id>", methods=["POST"])
+def delete_journal(journal_id):
+    mongo.db.journals.delete_one({"_id": ObjectId(journal_id)})
+    flash("You just deleted a journal")
+    return redirect(url_for("get_journals"))
 
 
 if __name__ == "__main__":
