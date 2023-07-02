@@ -130,8 +130,7 @@ def new_journal():
         flash("Yay! You created a new journal")
         return redirect(url_for("get_journals"))
 
-    categories = mongo.db.categories.find().sort("category_name", 1)
-    return render_template("new_journal.html", categories=categories)
+    return render_template("new_journal.html")
 
 
 @app.route("/edit_journal/<journal_id>", methods=["GET", "POST"])
@@ -146,9 +145,8 @@ def edit_journal(journal_id):
         flash("You just updated the journal")
         return redirect(url_for("get_journals"))
     journal = mongo.db.journals.find_one({"_id": ObjectId(journal_id)})
-    categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template(
-        "edit_journal.html", journal=journal, categories=categories)
+        "edit_journal.html", journal=journal)
 
 
 @app.route("/delete_journal/<journal_id>", methods=["POST"])
