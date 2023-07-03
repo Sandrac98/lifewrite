@@ -1,6 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Caprasimo&family=Hammersmith+One&display=swap');
-  
-
 
 body {
   display: flex;
@@ -11,6 +9,8 @@ body {
 main {
   flex: 1 0 auto;
 }
+
+/*-------------------------------------------------------------------Navbar*/
 .brand-logo {
   font-family: caprasimo;
   float: left;
@@ -19,20 +19,75 @@ main {
   margin-left: 10px;
 }
 
- /* form label color */
+nav ul a{
+  font-family: caprasimo;
+  height: 100%;
+  font-size: 23px;
+}
+
+/*-------------------------------------------------------------------flash message */
+.flashes h4{
+  line-height: 3;
+  text-align: center;
+  font-family: 'Hammersmith One', sans-serif;
+}
+
+
+ /* -------------------------------------------------------------------new journal form styling */
+ .card-panel h3{
+  font-family: caprasimo;
+ }
  .input-field label {
     color: #3f51b5;
   }
 
+  .input-field{
+    font-family:'Hammersmith One', sans-serif;
+  }
+
+/*------------------------------------------------------------------- Card Journal Styling */
+.card-large .card-content {
+  height: 200px;
+}
+
+.card-title{
+  font-family: caprasimo;
+  color: #3f51b5;
+}
+
+.btn-small{
+  float: right;
+}
+
+.card-reveal p{
+  font-family:'Hammersmith One', sans-serif;
+  color:#9983c2;
+  line-height:35px;
+}
+
+
+/*------------------------------------------------------------------------edit journal styling*/
+
+.edit-journal {
+  font-family: caprasimo;
+  color: #3f51b5;
+}
+
+input#journal_name, #journal_entry{
+  font-family: 'Hammersmith One', sans-serif;
+  color: #9983c2;
+}
+/*-------------------------------------------------------------------Footer Styling */
+
 footer{
-  background-color: #3f51b5;
+  background-color: #d1c4e9 ;
 
 }
   footer p {
     text-align: center;
     text-transform: none;
     font-size: 1.3em;
-    color: #0c2f80;
+    color: #3f51b5;
     
 }
 
@@ -47,15 +102,8 @@ footer{
 .social-network i {
     margin: 13px;
     padding-left: 15px;
-    color: #0c2f80;
+    color: #3f51b5;
     font-weight: bold;
     font-size: 2em;
 }
 
-.btn-small{
-  float: right;
-}
-
-.card-large .card-content {
-  height: 200px;
-}

@@ -88,7 +88,8 @@ def login():
                  existing_user["password"], request.form.get("password")):
                 session["user"] = request.form.get("username").lower()
                 flash("Welcome, {}".format(request.form.get("username")))
-                return redirect(url_for("profile", username=session["user"]))
+                return redirect(url_for(
+                    "get_journals", username=session["user"]))
             else:
                 # Invalid username or password
                 flash("Incorrect Username and/or Password")
