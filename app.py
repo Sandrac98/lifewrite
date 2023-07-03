@@ -42,6 +42,14 @@ def get_journal(journal_id):
         return f"Error retrieving journal: {str(e)}"
 
 
+@app.route("/")
+@app.route("/home")
+def home():
+    welcome_message = (
+        "Welcome to LifeWrite, your personal journaling companion!")
+    return render_template("home.html", welcome_message=welcome_message)
+
+
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if "user" in session:
@@ -100,6 +108,8 @@ def login():
 
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
+    if "user" in session:
+        return redirect(url_for("get_journals"))
     # Retrieve the user's information from the database based
     #  on the provided username
     user = mongo.db.users.find_one({"username": username})
@@ -107,8 +117,6 @@ def profile(username):
     if not user:
         flash("User not found")
         return redirect(url_for("login"))
-
-    return render_template("profile.html", username=user["username"])
 
 
 @app.route("/logout")

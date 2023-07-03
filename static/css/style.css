@@ -25,6 +25,21 @@ nav ul a{
   font-size: 23px;
 }
 
+/*------------------------------------------------------------------------------------Homepage */
+.home-container h1{
+  font-family: caprasimo;
+  text-align: center;
+  line-height: 95px;
+  font-style: oblique;
+}
+
+.home-container h3{
+  font-family: 'Hammersmith One', sans-serif;
+  text-align: left;
+  line-height: 85px;
+  color: #9983c2;
+}
+
 /*-------------------------------------------------------------------flash message */
 .flashes h4{
   line-height: 3;

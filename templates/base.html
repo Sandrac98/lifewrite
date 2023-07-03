@@ -17,10 +17,10 @@
     <header>
         <nav class="deep-purple lighten-4">
             <div class="nav-wrapper">
-              <a href="{{ url_for('get_journals')}}" class="brand-logo">LifeWrite</a>
+              <a href="{{ url_for('home')}}" class="brand-logo">LifeWrite</a>
               <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fa fa-bars"></i></a>
               <ul class="right hide-on-med-and-down">
-                <li><a href="{{ url_for('get_journals')}}">Home</a></li>
+                <li><a href="{{ url_for('home')}}">Home</a></li>
                 {% if session.user %}
                 <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
                 <li><a href="{{ url_for('logout') }}">Log Out</a></li>
