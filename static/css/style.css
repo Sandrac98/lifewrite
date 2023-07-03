@@ -47,7 +47,6 @@ nav ul a{
   font-family: 'Hammersmith One', sans-serif;
 }
 
-
  /* -------------------------------------------------------------------new journal form styling */
  .card-panel h3{
   font-family: caprasimo;
@@ -80,7 +79,6 @@ nav ul a{
   line-height:35px;
 }
 
-
 /*------------------------------------------------------------------------edit journal styling*/
 
 .edit-journal {
@@ -92,6 +90,7 @@ input#journal_name, #journal_entry{
   font-family: 'Hammersmith One', sans-serif;
   color: #9983c2;
 }
+
 /*-------------------------------------------------------------------Footer Styling */
 
 footer{
@@ -122,3 +121,116 @@ footer{
     font-size: 2em;
 }
 
+/*---------------------------------------------------mobile view */
+@media screen and (max-width: 600px) {
+  .brand-logo {
+    font-family: caprasimo;
+    float: left;
+    width: 150px;
+    height: 100%;
+    text-align: center;
+  }
+
+  .sidenav li a {
+    font-family: caprasimo;
+    line-height: 100px;
+    color: #3f51b5;
+    margin-top: 35px;
+    text-align: left;
+    font-size: 30px;
+  }
+
+  .home-container h1 {
+    font-family: caprasimo;
+    text-align: center;
+    line-height: 60px;
+    font-style: oblique;
+    font-size: 43px;
+}
+
+.home-container h3 {
+  font-family: 'Hammersmith One', sans-serif;
+  text-align: left;
+  line-height: 65px;
+  color: #9983c2;
+  font-size: 30px;
+  margin-left: 16px;
+}
+/*-------------------------------------------------------------------flash message */
+.flashes h4{
+  text-align: center;
+  font-family: 'Hammersmith One', sans-serif;
+  font-size: 24px;
+  margin: 0;
+  line-height: 34px;
+}
+}
+
+/* -----------------------------------MEDIA QUERY FOR SAMSUNG FOLD */
+@media (min-width: 200px) and (max-width: 299px) {
+  .brand-logo {
+    font-family: caprasimo;
+    float: left;
+    width: 150px;
+    height: 100%;
+    text-align: center;
+  }
+
+  .sidenav li a {
+    font-family: caprasimo;
+    line-height: 100px;
+    color: #3f51b5;
+    margin-top: 35px;
+    text-align: left;
+    font-size: 30px;
+  }
+
+  .home-container h1 {
+    font-family: caprasimo;
+    text-align: center;
+    line-height: 50px;
+    font-style: oblique;
+    font-size: 38px;
+}
+
+.home-container h3 {
+  font-family: 'Hammersmith One', sans-serif;
+  text-align: left;
+  line-height: 50px;
+  color: #9983c2;
+  font-size: 27px;
+  margin-left: 12px;
+}
+
+.edit-journal {
+    font-family: caprasimo;
+    color: #3f51b5;
+    font-size: 23px;
+}
+
+.card .card-content {
+  height: 350px;
+  margin-top:54px;
+  padding: 12px;
+}
+.sidenav p {
+  font-size: 15px;
+  text-align: center;
+  opacity: 13%;
+  margin-top: 342px;
+}
+
+center, .center-align {
+  text-align: center;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+.btn-large {
+  height: 46px;
+  line-height: 45px;
+  font-size: 12px;
+  padding: 0px 12px;
+  margin: 10px;
+}
+}

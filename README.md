@@ -1,108 +1,154 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# MemoraLog
 
-Welcome USER_NAME,
+Welcome to MemoraLog, your personal journaling companion!
+It's time to embark on a remarkable journey of self-discovery and personal growth. With MemoraLog, you have a powerful tool at your fingertips to capture your thoughts, emotions, and experiences. Begin your journaling adventure today and unlock the power of self-reflection. Dive into the depths of your mind, unleash your creativity, and document every step of your unique journey. So, are you ready to embark on this extraordinary journey? Start documenting your experiences, thoughts, and dreams with MemoraLog today. Let your story unfold and watch as you grow, one entry at a time.
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+Welcome to MemoraLog!
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **September 1, 2021**
+[View deployed site here](https://memoralog-19cc396b0aff.herokuapp.com/)
 
-## Gitpod Reminders
+![Responsive Mockup](./assets/readme-images/mockup.png)
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
 
-`python3 -m http.server`
+The goals of this website are:
+* Facilitate self-discovery: MemoraLog aims to help users deepen their self-awareness and gain insights into their thoughts, emotions, and experiences.
+* Provide a comprehensive and empowering journaling experience that supports personal growth and self-reflection
+* Empower individuals to explore their inner world, uncover patterns, and discover personal growth opportunities.
 
-A blue button should appear to click: _Make Public_,
+# Table of Contents  
 
-Another blue button should appear to click: _Open Browser_.
+## Contents
+- [UX](#ux)
+  * [Ideal User](#ideal-user)
+- [Features](#features)
+  + [Existing Features](#existing-features)
+  + [Features Left To Implement](#features-left-to-implement)
+- [Design](#design)  
+  + [Colour Scheme](#colour-scheme)
+- [Testing](./Testing.md)
+- [Deployment](#deployment)
+  + [Creating a Gitpod Workspace](#creating-a-gitpod-workspace)
+  + [GitHub Pages](#github-pages)
+  + [Forking the GitHub Repository](#forking-the-github-repository)
+  + [Making a Local Clone](#making-a-local-clone)
+- [Credits](#credits)
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+# UX
+## Ideal User
+### The ideal visitor for this website is:
 
-A blue button should appear to click: _Make Public_,
+* Someone who values personal growth, self-reflection, and creative expression.
+* Someone  who is motivated to explore their thoughts, emotions, and experiences in a meaningful way.
+* Anyone who someone who seeks self-reflection as a means to understand themselves better. They are willing to dive deep into their thoughts, explore their emotions, and gain insights into their patterns and behaviors.
+* The ideal user understands the value of consistency in journaling. They are committed to making journaling a regular practice, even during busy or challenging times. They recognize that the true benefits of journaling come from continuous engagement and dedication.
 
-Another blue button should appear to click: _Open Browser_.
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+### User stories
 
-To log into the Heroku toolbelt CLI:
+1. As a user, I want to have a convenient and accessible platform to journal my thoughts and experiences on the go, so I can capture my ideas and reflections whenever inspiration strikes, whether I'm at home, at work, or on the move.
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+2. As a user, I want to be able to easily navigate through my journal entries  whenever I need to revisit them for reflection or inspiration.
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+3. As a user, I want to feel confident in the privacy and security of my journal entries, knowing that my personal thoughts and reflections are protected and accessible only to me, ensuring a safe and private space for self-expression.
 
-------
+4. As a user, I want to be able to seamlessly sync my journal across multiple devices, so I can access and continue my journaling experience from any device, ensuring that my thoughts and memories are always at my fingertips.
 
-## Release History
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+# Features 
+## Existing Features
+The website's navigation bar is designed with responsiveness in mind, ensuring it appears consistently on every page and remains fixed in place. It dynamically adapts its layout and appearance to suit various screen sizes and devices. On smaller screens, such as mobile devices, it transforms into a convenient hamburger menu for optimal navigation.
 
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
+The primary objective of the navigation bar is to enhance the user experience by facilitating seamless movement between different sections of the website. Users can effortlessly explore various pages without having to rely solely on the back button. The navigation bar remains easily accessible and provides intuitive navigation options throughout the website.
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
+![navbar](./static/readme-images/navbar.png)
+![sidenav](./static/readme-images/sidenav.png)
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
+User Registration: Users can register for an account by providing a username, password, and email.
 
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
+  ![Register Form](./static/readme-images/register-form.png)
 
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
+User Login: Registered users can log in to their accounts using their credentials.
 
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
+![Log In Form](./static/readme-images/log-in-form.png)
 
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
+User Profile: Each user has a profile page that displays their information, such as the username.
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+![User Profile](./static/readme-images/user-profile.png)
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
+- Displaying a list of existing journals:
+     Each journal is represented as a card with a title and a summary.
+     Clicking on a card reveals more details about the journal entry.
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+![Existing Journals](./static/readme-images/existing-journals.png)
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
+- Adding a new journal:
+      Clicking the "Add New Journal" button reveals a form where users can enter the journal name and entry.
+      Submitting the form creates a new journal entry and stores it in the database.
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+![New Journal](./static/readme-images/new-journal.png)
 
-------
 
-## FAQ about the uptime script
+- Editing an existing journal:
+      Clicking the "pen" button on a journal card allows users to modify the journal name and entry.
+      Submitting the edit form updates the journal entry in the database.
 
-**Why have you added this script?**
+![Edit Journal](./static/readme-images/edit-journal.png)
 
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
+- Deleting a journal:
+     Clicking the "Delete" button on a journal card removes the journal entry from the database.
 
-**How will this affect me?**
+![Delete Journal](./static/readme-images/delete-journal.png)
 
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
+- User Authentication: The app utilizes session-based user authentication. Users need to log in to access their profile.
 
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
+- Navigation Menu: The app includes a navigation menu that changes based on the user's authentication status. It displays options such as Home, Profile, New Journal, Log In, and Register.
 
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
+![User not in session](./static/readme-images/navbar.png)
+![User in session](./static/readme-images/user-session.png)
 
-**So….?**
+- Flash Messages: Flash messages are used to provide feedback to users, such as successful registration, incorrect login credentials, or the need to log in to access certain features.
 
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
+![Flash Message](./static/readme-images/flash-message.png)
 
-**Can I opt out?**
+## Features Left to Implement
 
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
+- I would like to implement the option to add categories for the journals
+- I would like to incorporate the option to integrate with the calendar app for effective monitoring of future events.
+- I would like to give the user the option to upload media files like pictures and videos.
 
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
+# Design
+## Colour Scheme.
 
-**Anything more?**
+I chose to use various shades pastel colours as they can be an excellent choice for journaling, as they often evoke a sense of calmness, tranquility, and creativity. Here are some reasons why pastel colors can be beneficial for journaling:
 
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
+Soft and Soothing: Pastel colors, with their subdued tones, can create a soothing and gentle visual experience. They are less intense than bright or bold colors, making them conducive to a calm and peaceful journaling environment. Pastel hues can help create a relaxed atmosphere and promote a sense of serenity while you engage in self-reflection.
 
----
+Emotional Expression: Colors can have a significant impact on our emotions and mood. Pastel colors, with their delicate and light tones, can evoke feelings of positivity, happiness, and optimism. Incorporating pastel shades into your journal can help you express and capture a range of emotions with subtlety and grace.
 
-Happy coding!
+Versatile and Harmonious: Pastel colors are known for their versatility and compatibility with one another. They tend to harmonize well when used together, creating a visually pleasing and cohesive aesthetic.
+![Colour Pallet](./static/readme-images/colour-pallet.png)
+
+# Deployment
+
+## Heroku Deployment
+
+This application can be easily deployed to Heroku using the following steps:
+
+Create a Heroku Account: If you don't have one already, sign up for a free Heroku account.
+
+Install Heroku CLI: Install the Heroku CLI on your local machine to interact with Heroku from the command line.
+
+Fork this Repository: Fork this repository to your GitHub account by clicking the "Fork" button at the top-right corner of this page.
+
+Create a New Heroku App: Log in to your Heroku account and create a new app from the Heroku dashboard. Choose a unique name for your app.
+
+Connect GitHub Repository: In the "Deploy" tab of your Heroku app dashboard, under the "Deployment method" section, select "GitHub" as the deployment method. Connect your forked repository by searching for its name.
+
+Configure Environment Variables: In the "Settings" tab of your Heroku app dashboard, click on the "Reveal Config Vars" button. Add any necessary environment variables used in your application.
+
+Deploy the App: In the "Deploy" tab, manually deploy your app by clicking the "Deploy Branch" button under the "Manual deploy" section. This will deploy the latest version of your app from the main branch.
+
+View Your App: Once the deployment is successful, click on the "Open App" button in the top-right corner of the Heroku dashboard to view your deployed app.
+

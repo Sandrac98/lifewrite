@@ -1,10 +1,10 @@
 import os
-from flask import (
-    Flask, flash, render_template,
-    redirect, request, session, url_for)
+from flask import (Flask, flash, render_template,
+                   redirect, request, session, url_for)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
+
 if os.path.exists("env.py"):
     import env
 
@@ -46,15 +46,12 @@ def get_journal(journal_id):
 @app.route("/home")
 def home():
     welcome_message = (
-        "Welcome to LifeWrite, your personal journaling companion!")
+        "Welcome to MemoraLog, your personal journaling companion!")
     return render_template("home.html", welcome_message=welcome_message)
 
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
-    if "user" in session:
-        return redirect(url_for("get_journals"))
-
     if request.method == "POST":
         # check if username exists in the db
         username = request.form.get("username", "")
@@ -70,14 +67,14 @@ def register():
         register = {
             "username": request.form.get("username").lower(),
             "password": generate_password_hash(request.form.get("password")),
-            "email": request.form.get("email")
+            "email": request.form.get("email"),
         }
 
         mongo.db.users.insert_one(register)
 
         # creates cookie session for new user
         session["user"] = request.form.get("username").lower()
-        flash("Welcome to LifeWrite!")
+        flash("Welcome to MemoraLog!")
         return redirect(url_for("get_journals"))
 
     return render_template("register.html")
@@ -88,16 +85,18 @@ def login():
     if request.method == "POST":
         # Check if username exists in the database
         existing_user = mongo.db.users.find_one(
-            {"username": request.form.get("username").lower()})
+            {"username": request.form.get("username").lower()}
+        )
 
         if existing_user:
             # Ensure hashed password matches user input
             if check_password_hash(
-                 existing_user["password"], request.form.get("password")):
+                existing_user["password"], request.form.get("password")
+            ):
                 session["user"] = request.form.get("username").lower()
                 flash("Welcome, {}".format(request.form.get("username")))
-                return redirect(url_for(
-                    "get_journals", username=session["user"]))
+                return redirect(
+                    url_for("get_journals", username=session["user"]))
             else:
                 # Invalid username or password
                 flash("Incorrect Username and/or Password")
@@ -108,6 +107,7 @@ def login():
 
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
+    # Redirects the user to the journals page
     if "user" in session:
         return redirect(url_for("get_journals"))
     # Retrieve the user's information from the database based
@@ -129,11 +129,11 @@ def logout():
 
 @app.route("/new_journal", methods=["GET", "POST"])
 def new_journal():
+    # creates a new journal on the database
     if request.method == "POST":
         journal = {
-            "category_name": request.form.get("category_name"),
             "journal_name": request.form.get("journal_name"),
-            "journal_entry": request.form.get("journal_entry")
+            "journal_entry": request.form.get("journal_entry"),
         }
         mongo.db.journals.insert_one(journal)
         flash("Yay! You created a new journal")
@@ -144,6 +144,7 @@ def new_journal():
 
 @app.route("/edit_journal/<journal_id>", methods=["GET", "POST"])
 def edit_journal(journal_id):
+    # updates the journal on the database
     if request.method == "POST":
         submit = {
             "journal_name": request.form.get("journal_name"),
@@ -151,15 +152,15 @@ def edit_journal(journal_id):
         }
         mongo.db.journals.update_one(
             {"_id": ObjectId(journal_id)}, {"$set": submit})
-        flash("You just updated the journal")
+        flash("You just updated a journal")
         return redirect(url_for("get_journals"))
     journal = mongo.db.journals.find_one({"_id": ObjectId(journal_id)})
-    return render_template(
-        "edit_journal.html", journal=journal)
+    return render_template("edit_journal.html", journal=journal)
 
 
 @app.route("/delete_journal/<journal_id>", methods=["POST"])
 def delete_journal(journal_id):
+    # Removes the journal on the database
     mongo.db.journals.delete_one({"_id": ObjectId(journal_id)})
     flash("You just deleted a journal")
     return redirect(url_for("get_journals"))
@@ -167,5 +168,4 @@ def delete_journal(journal_id):
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
-            port=int(os.environ.get("PORT")),
-            debug=True)
+            port=int(os.environ.get("PORT")), debug=False)

@@ -1,50 +1,60 @@
 {% extends "base.html"%}
 {% block content %}
 
+<!--Log in form-->
 <div class="row">
-    <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('login') }}">
-      <div class="card amber lighten-5">
-        <div class="card-content indigo-text">
-          <span class="card-title">Log In</span>
+	<form class="col s12 m8 offset-m2" method="POST"
+		action="{{ url_for('login') }}">
+		<div class="card amber lighten-5">
+			<div class="card-content indigo-text">
+				<span class="card-title">Log In</span>
 
-          <!--username-->
-         <div class="row indigo-text">
-            <div class="input-field col s6">
-                <input  id="username" name="username" type="text" class="validate" minlength="8" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" required>
-                <label for="username">Username</label>
-              </div>
-         </div>
-       
-         <!--password-->
-        <div class="row">
-            <div class="input-field col s6">
-              <input id="password" name="password" type="password" class="validate"  minlength="8" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" required>
-              <label for="password">Password</label>
-            </div>
-          </div>
+				<!--username-->
+				<div class="row indigo-text">
+					<div class="input-field col s6">
+						<input id="username" name="username" type="text"
+							class="validate" minlength="5" maxlength="15"
+							pattern="^[a-zA-Z0-9]{5,15}$" required>
+						<label for="username">Username</label>
+					</div>
+				</div>
 
-          <!--email-->
-          <div class="row">
-            <div class="input-field col s6">
-              <input id="email" name="email" type="email" class="validate">
-              <label for="email">Email</label>
-            </div>
-          </div>
-          </div>
+				<!--password-->
+				<div class="row">
+					<div class="input-field col s6">
+						<input id="password" name="password" type="password"
+							class="validate" minlength="8" maxlength="15"
+							pattern="^[a-zA-Z0-9]{5,15}$" required>
+						<label for="password">Password</label>
+					</div>
+				</div>
 
-        <!--log in-->
-        <button class="waves-effect waves-light btn-large deep-purple lighten-4" type="submit">
-            <a class="indigo-text">Log In</a>
-          </button>
+				<!--email-->
+				<div class="row">
+					<div class="input-field col s6">
+						<input id="email" name="email" type="email"
+							class="validate">
+						<label for="email">Email</label>
+					</div>
+				</div>
+			</div>
 
-        <div class="row">
-          <div class="col-12">
-            <p class="center-align">
-              Are you new here? <a href="{{ url_for('register')}}"> Create an account! </a>
-            </p>
-          </div>
-        </div>
-    </div>
-  </form>
-  </div>
+			<!--log in button-->
+			<button
+				class="waves-effect waves-light btn-large deep-purple lighten-4"
+				type="submit">
+				<a class="indigo-text">Log In</a>
+			</button>
+			<!--Register link for new users-->
+			<div class="row">
+				<div class="col-12">
+					<p class="center-align indigo-text">
+						Are you new here? <a href="{{ url_for('register')}}">
+							Create an account! </a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
 {% endblock %}
