@@ -19,6 +19,13 @@ mongo = PyMongo(app)
 
 
 @app.route("/")
+@app.route("/home")
+def home():
+    welcome_message = (
+        "Welcome to MemoraLog, your personal journaling companion!")
+    return render_template("home.html", welcome_message=welcome_message)
+
+
 @app.route("/get_journals")
 def get_journals():
     try:
@@ -40,14 +47,6 @@ def get_journal(journal_id):
             return "Journal not found"
     except Exception as e:
         return f"Error retrieving journal: {str(e)}"
-
-
-@app.route("/")
-@app.route("/home")
-def home():
-    welcome_message = (
-        "Welcome to MemoraLog, your personal journaling companion!")
-    return render_template("home.html", welcome_message=welcome_message)
 
 
 @app.route("/register", methods=["GET", "POST"])
