@@ -115,6 +115,9 @@ footer{
     text-align: center;
   }
 
+  .sidenav {
+    background-color: #d1c4e9;
+  }
   .sidenav li a {
     font-family: caprasimo;
     line-height: 100px;
@@ -122,6 +125,7 @@ footer{
     margin-top: 35px;
     text-align: left;
     font-size: 30px;
+    
   }
 
   .home-container h1 {
@@ -138,7 +142,7 @@ footer{
   line-height: 65px;
   color: #9983c2;
   font-size: 30px;
-  margin-left: 16px;
+
 }
 /*-------------------------------------------------------------------flash message */
 .flashes h4{
