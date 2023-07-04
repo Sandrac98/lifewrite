@@ -105,22 +105,6 @@ footer{
     
 }
 
-.social-network {
-    text-align: center;
-}
-
-.social-network li {
-    display: inline;
-}
-
-.social-network i {
-    margin: 13px;
-    padding-left: 15px;
-    color: #3f51b5;
-    font-weight: bold;
-    font-size: 2em;
-}
-
 /*---------------------------------------------------mobile view */
 @media screen and (max-width: 600px) {
   .brand-logo {
