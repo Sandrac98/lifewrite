@@ -33,24 +33,19 @@ Memoralog was tested for responsiveness using the Google Chrome browser and the 
 |The edit button opens the edit journal form and submit the edited journal| Press the edit button and submit an update|The button redirects to the edit journal form and when submited it succesfully update the journal|PASS|
  
 # W3C HTML Validator
- - Code was checked using https://validator.w3.org/ error showed in the results is explained at the unfixed bug section 
+ - Code was checked using https://validator.w3.org/ error showed in the results have been fixed. 
 
- ![W3C HTML Validator](./assets/testing-images/html-validator.png)
+ ![W3C HTML Validator](./static/testing-images/html-validator-error.png)
 
 # W3C CSS Validator
-- No errors were found when passing through https://jigsaw.w3.org/css-validator/
+- The errors display are related to the Materialize link which is vital for the functionality of this app https://jigsaw.w3.org/css-validator/
   
-![(Jigsaw) validator](./assets/testing-images/css-validation.png)
+![(Jigsaw) validator](./static/testing-images/css-validator.png)
 
 # Lighthouse score. 
 
-![Lighthouse Test](./assets/testing-images/lighthouse-score.png)
+![Lighthouse Test](./static/testing-images/lighthouse-score.png)
 
 # JSHINT Javascript Code Quality Tool
-The code for the Pomodoro and the To-Do List were tested separately.
+![jshint](./static/testing-images/jshint.png)
 
-![pomo-jshint](./assets/testing-images/jshint-pomo.png)
-
-
-
-![to-do-list-jshint](/assets/testing-images/jshint-todo-list.png)

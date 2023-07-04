@@ -1,3 +1,4 @@
+/*jshint esversion: 6 */
 /*navbar*/
 $(document).ready(function() {
   $('.sidenav').sidenav();
@@ -29,4 +30,4 @@ fetch('url', {
   })
   .catch(function(e) {
 
-  })
+  });
