@@ -38,7 +38,7 @@ Memoralog was tested for responsiveness using the Google Chrome browser and the 
  ![W3C HTML Validator](./static/testing-images/html-validator-error.png)
 
 # W3C CSS Validator
-- The errors display are related to the Materialize link which is vital for the functionality of this app https://jigsaw.w3.org/css-validator/
+-  Code was checked using https://jigsaw.w3.org/css-validator/ error showed are explained in the unfixed bug section.
   
 ![(Jigsaw) validator](./static/testing-images/css-validator.png)
 
@@ -49,3 +49,7 @@ Memoralog was tested for responsiveness using the Google Chrome browser and the 
 # JSHINT Javascript Code Quality Tool
 ![jshint](./static/testing-images/jshint.png)
 
+# Unfixed bugs 
+
+- The errors display are related to the Materialize link which is vital for the functionality of this app 
+![(Jigsaw) validator](./static/testing-images/css-validator.png)

@@ -7,7 +7,7 @@ Welcome to MemoraLog!
 
 [View deployed site here](https://memoralog-19cc396b0aff.herokuapp.com/)
 
-![Responsive Mockup](./assets/readme-images/mockup.png)
+![Responsive Mockup](./static/readme-images/mockup.png)
 
 
 The goals of this website are:
@@ -27,11 +27,7 @@ The goals of this website are:
   + [Colour Scheme](#colour-scheme)
 - [Testing](./Testing.md)
 - [Deployment](#deployment)
-  + [Creating a Gitpod Workspace](#creating-a-gitpod-workspace)
-  + [GitHub Pages](#github-pages)
-  + [Forking the GitHub Repository](#forking-the-github-repository)
-  + [Making a Local Clone](#making-a-local-clone)
-- [Credits](#credits)
+  + [Heroku Deployment](#heroku-deployment)
 
 # UX
 ## Ideal User
