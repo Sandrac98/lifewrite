@@ -28,7 +28,7 @@ nav ul a{
 /*------------------------------------------------------------------------------------Homepage */
 .home-container h1{
   font-family: caprasimo;
-  text-align: center;
+  text-align: left;
   line-height: 95px;
   font-style: oblique;
 }
@@ -126,7 +126,7 @@ footer{
 
   .home-container h1 {
     font-family: caprasimo;
-    text-align: center;
+    text-align: left;
     line-height: 60px;
     font-style: oblique;
     font-size: 43px;

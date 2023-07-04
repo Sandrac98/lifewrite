@@ -1,8 +1,8 @@
 /*jshint esversion: 6 */
 /*navbar*/
-$(document).ready(function() {
+
+$(document).ready(function(){
   $('.sidenav').sidenav();
-  var instance = M.Sidenav.getInstance(draggable);
 });
 
 $(document).ready(function() {
