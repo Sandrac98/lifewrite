@@ -1,6 +1,8 @@
 import os
-from flask import (Flask, flash, render_template,
-                   redirect, request, session, url_for)
+from functools import wraps
+from flask import (
+    Flask, flash, render_template, redirect, request, session, url_for
+)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -18,6 +20,16 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
+def login_required(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        if 'user' not in session:
+            flash('Please log in to access this page.', 'warning')
+            return redirect(url_for('login'))
+        return f(*args, **kwargs)
+    return decorated_function
+
+
 @app.route("/")
 @app.route("/home")
 def home():
@@ -29,14 +41,20 @@ def home():
 @app.route("/get_journals")
 def get_journals():
     try:
-        journals = mongo.db.journals.find()
-        return render_template("journals.html", journals=journals)
+        if 'user' in session:
+            current_user_id = session.get("user")
+            journals = mongo.db.journals.find({"user_id": current_user_id})
+            return render_template("journals.html", journals=journals)
+        else:
+            flash("Please log in to access your journals.", "warning")
+            return redirect(url_for("login"))
     except Exception as e:
         return f"Error connecting to MongoDB: {str(e)}"
 
 
 @app.route("/journal/<journal_id>")
-def get_journal(journal_id):
+@login_required
+def view_journal(journal_id):
     try:
         # Retrieve the journal from the database using the journal_id
         journal = mongo.db.journals.find_one({"_id": ObjectId(journal_id)})
@@ -127,12 +145,14 @@ def logout():
 
 
 @app.route("/new_journal", methods=["GET", "POST"])
+@login_required
 def new_journal():
     # creates a new journal on the database
     if request.method == "POST":
         journal = {
             "journal_name": request.form.get("journal_name"),
             "journal_entry": request.form.get("journal_entry"),
+            "user_id": session["user"],
         }
         mongo.db.journals.insert_one(journal)
         flash("Yay! You created a new journal")
@@ -142,8 +162,14 @@ def new_journal():
 
 
 @app.route("/edit_journal/<journal_id>", methods=["GET", "POST"])
+@login_required
 def edit_journal(journal_id):
     # updates the journal on the database
+    journal = mongo.db.journals.find_one({"_id": ObjectId(journal_id)})
+    if journal['user_id'] != session['user']:
+        flash('You do not have permission to edit this journal.', 'danger')
+        return redirect(url_for('get_journals'))
+
     if request.method == "POST":
         submit = {
             "journal_name": request.form.get("journal_name"),
@@ -153,13 +179,19 @@ def edit_journal(journal_id):
             {"_id": ObjectId(journal_id)}, {"$set": submit})
         flash("You just updated a journal")
         return redirect(url_for("get_journals"))
-    journal = mongo.db.journals.find_one({"_id": ObjectId(journal_id)})
+
     return render_template("edit_journal.html", journal=journal)
 
 
 @app.route("/delete_journal/<journal_id>", methods=["POST"])
+@login_required
 def delete_journal(journal_id):
     # Removes the journal on the database
+    journal = mongo.db.journals.find_one({"_id": ObjectId(journal_id)})
+    if journal['user_id'] != session['user']:
+        flash('You do not have permission to delete this journal.', 'danger')
+        return redirect(url_for('get_journals'))
+
     mongo.db.journals.delete_one({"_id": ObjectId(journal_id)})
     flash("You just deleted a journal")
     return redirect(url_for("get_journals"))
