@@ -140,14 +140,14 @@ It's pretty simple: Each journal entry is associated with a specific user throug
 ## Here's an Example
 
 Just to give you a taste, here's an example of what an entry document looks like:
-    {
-      "_id": ObjectId("5f8a3acdc39df84ca893745a"),
-      "journal_name": "My First Journal Entry",
-      "journal_entry": "This is the content of my first journal entry...",
-      "user_id": ObjectId("5f8a3acdc39df84ca8937459")
-    }
-
-
+  ```json
+            {
+              "_id": ObjectId("5f8a3acdc39df84ca893745a"),
+              "journal_name": "My First Journal Entry",
+              "journal_entry": "This is the content of my first journal entry...",
+              "user_id": ObjectId("5f8a3acdc39df84ca8937459")
+            }
+```
 # Design
 ## Colour Scheme.
 
