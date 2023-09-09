@@ -23,7 +23,7 @@ The goals of this website are:
 - [Features](#features)
   + [Existing Features](#existing-features)
   + [Features Left To Implement](#features-left-to-implement)
-- [Database Schema](#database-schema)
+- [Database](#database)
 - [Design](#design)  
   + [Colour Scheme](#colour-scheme)
 - [Testing](./Testing.md)
@@ -116,7 +116,7 @@ User Profile: Each user has a profile page that displays their information, such
 - I would like to give the user the option to upload media files like pictures and videos.
 
 
-# Database Schema.
+# Database.
   If your're curious about how the journal entries and user data is organized in the system, this guide will give you a clear picture.
 
 # The Data.
@@ -133,6 +133,19 @@ Now let's tallk about the actual journal entries! These are stored in the "Entri
 - journal_name: The title of the journal entry.
 - journal_entry: The main text of the entry.
 - user_id: A reference to the user who wrote the entry (this links back to the Users collection).
+
+# Data Types
+- _id: ObjectId
+- username: String
+- email: String (unique)
+- password: Hashed string
+- journal_name: String
+- journal_entry: String
+- user_id: ObjectId (foreign key referencing Users)
+
+# Unique Constraints
+
+Username and email are set as unique constraints to prevent duplicate values and ensure the uniqueness of user identification.
 
 ## How It All Fits Together.
 It's pretty simple: Each journal entry is associated with a specific user through the user_id. So, there's a one-to-many relationship between users and their entries. One user can have many entries, but each entry belongs to only one user.
